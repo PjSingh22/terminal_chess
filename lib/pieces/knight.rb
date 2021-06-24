@@ -13,7 +13,7 @@ class Knight < Piece
     ].freeze
   end
 
-  def symbol
+  def to_s
     color == :white ? '♞' : '♘'
   end
 end

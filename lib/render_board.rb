@@ -1,3 +1,5 @@
+require_relative 'decorations'
+
 class RenderBoard
   attr_reader :board
 

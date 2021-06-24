@@ -13,6 +13,6 @@ class Queen < Piece
   end
 
   def to_s
-   color == :black ? '♛' : '♕'
+   color == :white ? '♛' : '♕'
   end
 end

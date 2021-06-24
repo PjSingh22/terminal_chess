@@ -1,5 +1,6 @@
 class Rook < Piece
-
+  include Slideable
+  
   def move_set
     [
       [0, 1],

@@ -1,4 +1,4 @@
-class King < piece
+class King < Piece
 
   def move_set
     [

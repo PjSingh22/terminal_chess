@@ -12,7 +12,7 @@ class Queen < Piece
     ]
   end
 
-  def to_s
+  def symbol
    color == :black ? '♛' : '♕'
   end
 end

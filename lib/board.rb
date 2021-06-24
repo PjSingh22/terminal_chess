@@ -9,4 +9,14 @@ class Board
     @grid = Array.new(8) { Array.new(8) }
   end
 
+  def place(position, piece)
+    row, column = position
+    grid[row][column] = piece
+  end
+
+  def in_bounds?(position)
+    row, column = position
+
+    row < grid.length && column < grid.first.length && !row.negative? && !column.negative?
+  end
 end

@@ -47,7 +47,7 @@ class RenderBoard
   def render_row(number)
     square = number.even? ? 0 : 1
     print "#{9 - number}  "
-    @board[number - 1].each do |position|
+    @board.grid[number - 1].each do |position|
       if position.nil?
         print square.even? ? '│    ' : "│#{'    '.bg_black}"
       else

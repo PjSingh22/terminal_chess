@@ -1,6 +1,6 @@
 class Piece
-  attr_accessor :position, :board
-  attr_reader :color
+  attr_accessor :position
+  attr_reader :color, :board
 
   def initialize(position, color, board)
     @board = board
@@ -12,11 +12,11 @@ class Piece
     !board[position].nil? && board[position].color != color
   end
 
-  def current_row
+  def current_r
     position.first
   end
 
-  def current_col
+  def current_c
     position.last
   end
 end

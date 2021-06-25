@@ -1,4 +1,5 @@
 class King < Piece
+  include Stepable
 
   def move_set
     [

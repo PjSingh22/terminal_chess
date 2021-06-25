@@ -1,4 +1,6 @@
 require_relative 'pieces/piece'
+require_relative 'modules/slideable'
+require_relative 'modules/stepable'
 require_relative 'pieces/king'
 require_relative 'pieces/queen'
 require_relative 'pieces/rook'

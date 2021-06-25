@@ -40,6 +40,11 @@ class Board
   def in_bounds?(position)
     row, column = position
 
-    row < grid.length && column < grid.first.length && !row.negative? && !column.negative?
+    row < grid.length && column < grid.first.length && row >= 0 && column >= 0
+  end
+
+  def empty?(position)
+    row, column = position
+    grid[row][column].nil?
   end
 end

@@ -1,4 +1,3 @@
-
 class Piece
   attr_accessor :position, :board
   attr_reader :color
@@ -13,11 +12,11 @@ class Piece
     !board[position].nil? && board[position].color != color
   end
 
-  def current_r
+  def current_row
     position.first
   end
 
-  def current_c
+  def current_col
     position.last
   end
 end

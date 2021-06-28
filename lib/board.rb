@@ -1,5 +1,5 @@
 require_relative 'pieces_files'
-
+require_relative 'player'
 class Board
   attr_accessor :grid
 
@@ -48,6 +48,12 @@ class Board
     grid[row][column].nil?
   end
 
+  def ally_at_pos?(pos, color)
+    #check if the position contains a piece of the same color
+    row, column = pos
+    !grid[row][column].nil? && grid[row][column].color == color
+  end
+
   def in_check?(color)
     king = pieces.find { |piece| piece.color == color && piece.is_a?(King) }
 
@@ -80,18 +86,15 @@ class Board
   def move_piece(start_pos, end_pos)
     piece = self[start_pos]
 
-    unless piece.safe_moves.include?(end_pos)
-      raise "End position (#{end_pos}) not in available moves: #{piece.safe_moves}"
-    end
-
+    raise 'Can\'t make that move! Try another.' unless piece.safe_moves.include?(end_pos)
     raise 'End position not in bounds of board' unless in_bounds?(end_pos)
 
     make_move(start_pos, end_pos)
   end
 
   def make_move(start_pos, end_pos)
-    self[start_pos], self[end_pos] = nil, self[start_pos]
-
+    self[end_pos] = self[start_pos]
+    self[start_pos] = nil
     self[end_pos].position = end_pos
   end
 

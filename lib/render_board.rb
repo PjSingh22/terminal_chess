@@ -13,7 +13,7 @@ class RenderBoard
   end
 
   def render
-    clear
+    # clear
     display_top_border
     display_rows
     display_bottom_border

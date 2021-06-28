@@ -1,7 +1,7 @@
 class Queen < Piece
   include Slideable
 
-  def move_dirs
+  def move_set
     [
       [0, 1],
       [0, -1],

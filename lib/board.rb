@@ -48,6 +48,27 @@ class Board
     grid[row][column].nil?
   end
 
+  def in_check?(color)
+    king = pieces.find { |piece| piece.color == color && piece.is_a?(King) }
+
+    if king.nil?
+      raise 'King not found'
+    end
+
+    king_pos = king.position
+
+    pieces.reject { |p| p.color == color }.each do |piece|
+      if piece.available_moves.include?(king_pos)
+        return true
+      end
+    end
+    false
+  end
+
+  def pieces
+    grid.flatten.reject { |piece| piece.nil? }
+  end
+
   def move_piece(start_pos, end_pos)
     piece = self[start_pos]
 

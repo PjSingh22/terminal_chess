@@ -2,16 +2,16 @@ require_relative 'lib/board'
 require_relative 'lib/game'
 require_relative 'lib/render_board'
 require_relative 'lib/pieces_files'
-b = Board.start_chess
+b = Board.new
 
 renderer = RenderBoard.new(b)
 
 
-b[[2, 2]] = Pawn.new([2, 2], :white, b)
-b[[2, 0]]= Pawn.new([2, 2], :white, b)
-b.move_piece([1, 1], [4, 4])
-renderer.render
-
+b[[1, 1]] = King.new([1, 1], :black, b)
+b[[1, 2]] = Queen.new([1, 2], :white, b)
+b[[6, 6]] = King.new([6, 6], :white, b)
+puts b.in_check?(:black)
+puts b.in_check?(:white)
 
 
 # renderer = RenderBoard.new(b.grid)

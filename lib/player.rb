@@ -6,9 +6,7 @@ class Player
   end
 
   def get_pos
-    input = gets.chomp
-    puts input
-    translate_input(input)
+    translate_input(gets.chomp)
   end
 
   def translate_input(input)

@@ -5,7 +5,7 @@ class Player
     @color = color
   end
 
-  def get_pos
+  def pos_input
     translate_input(gets.chomp)
   end
 

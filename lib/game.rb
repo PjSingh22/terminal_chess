@@ -40,7 +40,7 @@ class Game
     # Prompt current player to enter a starting pos
     loop do
       puts 'Select a piece to move: '
-      start_pos = current_player.get_pos
+      start_pos = current_player.pos_input
       if board[start_pos].nil?
         puts "Did not select a #{current_player.color} piece."
       elsif board[start_pos].color == current_player.color
@@ -51,7 +51,7 @@ class Game
     # Prompt current player to enter an ending pos
     loop do
       puts 'Select a position to move to:'
-      end_pos = current_player.get_pos
+      end_pos = current_player.pos_input
 
       # Move the piece
       begin

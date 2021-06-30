@@ -10,6 +10,8 @@ class Player
   end
 
   def translate_input(input)
+    return input.to_i if input.size == 1
+
     split_input = input.split('')
     x = 8 - split_input.last.to_i
     y = case split_input.first.downcase

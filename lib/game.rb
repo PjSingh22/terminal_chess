@@ -1,3 +1,5 @@
+require 'yaml'
+
 class Game
   attr_reader :player1, :player2, :board, :renderer
   attr_accessor :current_player
@@ -38,13 +40,22 @@ class Game
   def take_turn
     start_pos = nil
     # Prompt current player to enter a starting pos
-    loop do
+     loop do
       puts 'Select a piece to move: '
       start_pos = current_player.pos_input
-      if board[start_pos].nil?
-        puts "Did not select a #{current_player.color} piece."
-      elsif board[start_pos].color == current_player.color
-        break
+
+      if start_pos == 2
+        board.save_game
+      elsif start_pos == 3
+        load_in_game
+      elsif start_pos == 1
+        puts 'incorrect input'
+      else
+        if board[start_pos].nil? || board[start_pos].color != current_player.color
+          puts "Did not select a #{current_player.color} piece."
+        elsif board[start_pos].color == current_player.color
+          break
+        end
       end
     end
 
@@ -63,15 +74,12 @@ class Game
     end
   end
 
-  def save_game
-    File.open('saved-game.yml', 'w') { |file| YAML.dump({ board: @board, current_player: @current_player }, file) }
-    puts 'Game Saved!'
-  end
-# work on loading game
-  def load_game
-    yaml = YAML.load_file('saved-game.yml')
-    @board = yaml[0]
-    renderer.render
-    puts 'Save Loaded'
+  def load_in_game
+    board = Board.new
+    saved_data = board.load_game
+    data_hash = saved_data[:board].grid
+    board.grid = Array.new(data_hash)
+    game = Game.new(board, Player.new(:white), Player.new(:black), RenderBoard)
+    game.play
   end
 end

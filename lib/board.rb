@@ -1,5 +1,7 @@
 require_relative 'pieces_files'
 require_relative 'player'
+require_relative 'render_board'
+
 class Board
   attr_accessor :grid
 
@@ -105,5 +107,15 @@ class Board
       new_board[new_piece.position] = new_piece
     end
     new_board
+  end
+
+  def save_game
+    puts 'Game saved!'
+    File.open('saved-game.yml', 'w') { |file| YAML.dump({ board: self }, file) }
+  end
+# work on loading game
+  def load_game
+    yaml = YAML.load_file('saved-game.yml')
+    yaml
   end
 end

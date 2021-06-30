@@ -62,4 +62,16 @@ class Game
       end
     end
   end
+
+  def save_game
+    File.open('saved-game.yml', 'w') { |file| YAML.dump({ board: @board, current_player: @current_player }, file) }
+    puts 'Game Saved!'
+  end
+# work on loading game
+  def load_game
+    yaml = YAML.load_file('saved-game.yml')
+    @board = yaml[0]
+    renderer.render
+    puts 'Save Loaded'
+  end
 end

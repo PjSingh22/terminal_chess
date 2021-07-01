@@ -37,6 +37,12 @@ class Game
     board.checkmate?(current_player.color)
   end
 
+#take_turn is a really really long method that is doing a lot of different things. Are you using rubocop to help you follow the Ruby Style Guide? 
+
+# I'd highly recommend breaking that method up into smaller helper methods. The names of these helper methods will help document what the code is doing & you will not need to write in separate comments. In addition, you might also find that some of this logic might belong in Board instead of Game. 
+
+# As you break this down, focus on how you can test this behavior. You will not be able to set the variable start_pos in a test, so look at other ways that you can test this. Often times, I like to pass in the needed information as a parameter, but that is not the only option.
+
   def take_turn
     start_pos = nil
     # Prompt current player to enter a starting pos

@@ -1,6 +1,5 @@
 def start_new_game
-  b = Board.start_chess
-  game = Game.new(b, Player.new(:white), Player.new(:black), RenderBoard)
+  game = Game.new(Board.start_chess, Player.new(:white), Player.new(:black), RenderBoard)
   game.play
 end
 

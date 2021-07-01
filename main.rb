@@ -7,7 +7,7 @@ require_relative 'lib/intro_text'
 require_relative 'lib/options'
 
 # add tests for important parts
-
+# create new game if player tries to load an empty or non existing file
 
 def select_game
   intro

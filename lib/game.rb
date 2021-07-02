@@ -43,20 +43,13 @@ class Game
 
 # As you break this down, focus on how you can test this behavior. You will not be able to set the variable start_pos in a test, so look at other ways that you can test this. Often times, I like to pass in the needed information as a parameter, but that is not the only option.
 
-  def take_turn
-    start_pos = nil
+  def take_turn(start_pos = nil)
     # Prompt current player to enter a starting pos
      loop do
       puts 'Select a piece to move: '
       start_pos = current_player.pos_input
 
-      if start_pos == 2
-        board.save_game
-      elsif start_pos == 3
-        load_in_game
-      elsif start_pos == 1
-        puts 'incorrect input'
-      else
+      if check_turn_input(start_pos) == false
         if board[start_pos].nil? || board[start_pos].color != current_player.color
           puts "Did not select a #{current_player.color} piece."
         elsif board[start_pos].color == current_player.color
@@ -77,6 +70,19 @@ class Game
       rescue => e
         puts e.message
       end
+    end
+  end
+
+  def check_turn_input(input)
+    case input
+    when 2
+      board.save_game
+    when 3
+      load_in_game
+    when 1
+      puts 'incorrect input'
+    else
+      false
     end
   end
 

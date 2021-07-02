@@ -15,6 +15,12 @@ describe Game do
   end
 
   describe '#take_turn' do
-    
+    start_pos = instance_double
+    it 'goes through a turn' do
+      allow(game).to receive(:pos_input)
+      allow(game).to receive(:gets).and_return([1, 1])
+      allow(game).receive(true)
+      allow
+    end
   end
 end

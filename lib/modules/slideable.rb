@@ -11,7 +11,7 @@ module Slideable
         current_c += dc
         pos = [current_r, current_c]
         break unless board.in_bounds?(pos)
-        break unless board.empty?(pos)
+        # break unless board.empty?(pos) #fix this issue
 
         if board.empty?(pos)
           moves << pos

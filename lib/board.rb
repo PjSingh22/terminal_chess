@@ -45,7 +45,7 @@ class Board
     row < grid.length && column < grid.first.length && row >= 0 && column >= 0
   end
 
-  def empty?(position)
+  def empty?(position) #fix this issue
     row, column = position
     grid[row][column].nil?
   end
@@ -88,7 +88,7 @@ class Board
   def move_piece(start_pos, end_pos)
     piece = self[start_pos]
 
-    raise 'Can\'t make that move! Try another.' unless piece.safe_moves.include?(end_pos)
+    raise 'Can\'t make that move! Try another.' unless piece.available_moves.include?(end_pos)
     raise 'End position not in bounds of board' unless in_bounds?(end_pos)
 
     make_move(start_pos, end_pos)

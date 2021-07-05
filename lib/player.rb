@@ -14,7 +14,8 @@ class Player
 
     split_input = input.split('')
     x = 8 - split_input.last.to_i
-    y = case split_input.first.downcase
+    # y = split_input.first.downcase
+    y = case split_input.first
         when 'a'
           0
         when 'b'

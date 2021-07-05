@@ -4,23 +4,13 @@ require './lib/player'
 require_relative '../lib/game'
 
 describe Game do
-  let(:game) { described_class.new(Board.start_chess, Player.new(:white), Player.new(:black), RenderBoard) }
+  let(:game) { described_class.new(Board.new, Player.new(:white), Player.new(:black), RenderBoard) }
   describe '#swap_players' do
     context 'when method is called' do
       it 'swaps current player to be second_player' do
         game.swap_player!
         expect(game.current_player).to be(game.player2)
       end
-    end
-  end
-
-  describe '#take_turn' do
-    start_pos = instance_double
-    it 'goes through a turn' do
-      allow(game).to receive(:pos_input)
-      allow(game).to receive(:gets).and_return([1, 1])
-      allow(game).receive(true)
-      allow
     end
   end
 end

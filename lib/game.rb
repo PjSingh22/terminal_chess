@@ -43,22 +43,23 @@ class Game
 
 # As you break this down, focus on how you can test this behavior. You will not be able to set the variable start_pos in a test, so look at other ways that you can test this. Often times, I like to pass in the needed information as a parameter, but that is not the only option.
 
-  def take_turn(start_pos = nil)
-    # Prompt current player to enter a starting pos
+  def take_turn(start_pos = nil, end_pos = nil)
      loop do
       puts 'Select a piece to move: '
       start_pos = current_player.pos_input
-
+      begin
       if check_turn_input(start_pos) == false
-        if board[start_pos].nil? || board[start_pos].color != current_player.color
+        if incorrect_move?(start_pos)
           puts "Did not select a #{current_player.color} piece."
         elsif board[start_pos].color == current_player.color
           break
         end
       end
+      rescue => e
+        puts 'Incorrect Input!'
+      end
     end
 
-    # Prompt current player to enter an ending pos
     loop do
       puts 'Select a position to move to:'
       end_pos = current_player.pos_input
@@ -73,9 +74,24 @@ class Game
     end
   end
 
+  def load_in_game
+    board = Board.new
+    saved_data = board.load_game
+    data_hash = saved_data[:board].grid
+    board.grid = Array.new(data_hash)
+    game = Game.new(board, Player.new(:white), Player.new(:black), RenderBoard)
+    game.play
+  end
+
+  private
+
+  def incorrect_move?(start_pos)
+    board[start_pos].nil? || board[start_pos].color != current_player.color
+  end
+
   def check_turn_input(input)
     case input
-    when 2
+    when 2 
       board.save_game
     when 3
       load_in_game
@@ -84,14 +100,5 @@ class Game
     else
       false
     end
-  end
-
-  def load_in_game
-    board = Board.new
-    saved_data = board.load_game
-    data_hash = saved_data[:board].grid
-    board.grid = Array.new(data_hash)
-    game = Game.new(board, Player.new(:white), Player.new(:black), RenderBoard)
-    game.play
   end
 end

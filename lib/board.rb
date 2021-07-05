@@ -113,9 +113,8 @@ class Board
     puts 'Game saved!'
     File.open('saved-game.yml', 'w') { |file| YAML.dump({ board: self }, file) }
   end
-# work on loading game
+
   def load_game
-    yaml = YAML.load_file('saved-game.yml')
-    yaml
+    YAML.load_file('saved-game.yml')
   end
 end

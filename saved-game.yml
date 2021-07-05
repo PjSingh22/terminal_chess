@@ -74,7 +74,12 @@
           - 
           - 
         - &6
-          - 
+          - !ruby/object:Pawn
+            board: *2
+            position:
+            - 4
+            - 0
+            color: :white
           - 
           - 
           - !ruby/object:Pawn
@@ -97,12 +102,7 @@
           - 
           - 
         - &8
-          - !ruby/object:Pawn
-            board: *2
-            position:
-            - 6
-            - 0
-            color: :white
+          - 
           - !ruby/object:Pawn
             board: *2
             position:

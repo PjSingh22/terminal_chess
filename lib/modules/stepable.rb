@@ -11,7 +11,7 @@ module Stepable
       pos = [current_r, current_c]
       next unless board.in_bounds?(pos)
 
-      if board.empty?(pos) || enemy?(pos)
+      if board.empty?(pos, color) || enemy?(pos)
         moves << pos
       end
     end

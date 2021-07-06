@@ -45,13 +45,12 @@ class Board
     row < grid.length && column < grid.first.length && row >= 0 && column >= 0
   end
 
-  def empty?(position) #fix this issue
+  def empty?(position, color)
     row, column = position
-    grid[row][column].nil?
+    grid[row][column].nil? || grid[row][column].color != color
   end
 
   def ally_at_pos?(pos, color)
-    #check if the position contains a piece of the same color
     row, column = pos
     !grid[row][column].nil? && grid[row][column].color == color
   end

@@ -12,13 +12,13 @@ class Pawn < Piece
 
     one_foreward = [current_r + foreward_dir, current_c]
 
-    if board.empty?(one_foreward)
+    if board.empty?(one_foreward, color)
       moves << one_foreward
     end
 
     two_foreward = [current_r + (foreward_dir * 2), current_c]
 
-    if board.empty?(two_foreward) && board.empty?(one_foreward) && at_start?
+    if board.empty?(two_foreward, color) && board.empty?(one_foreward, color) && at_start?
       moves << two_foreward
     end
 
